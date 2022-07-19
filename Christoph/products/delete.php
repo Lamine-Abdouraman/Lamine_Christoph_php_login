@@ -15,12 +15,12 @@ require_once '../components/db_connect.php';
 
 if ($_GET['id']) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM products WHERE id = {$id}";
+    $sql = "SELECT * FROM cars WHERE id = {$id}";
     $result = mysqli_query($connect, $sql);
     $data = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) == 1) {
-        $name = $data['name'];
-        $price = $data['price'];
+        $brand = $data['brand'];
+        $model = $data['model'];
         $picture = $data['picture'];
     } else {
         header("location: error.php");
@@ -55,11 +55,11 @@ if ($_GET['id']) {
 
 <body>
     <fieldset>
-        <legend class='h2 mb-3'>Delete request <img class='img-thumbnail rounded-circle' src='pictures/<?php echo $picture ?>' alt="<?php echo $name ?>"></legend>
+        <legend class='h2 mb-3'>Delete request <img class='img-thumbnail rounded-circle' src='../pictures/<?php echo $picture ?>' alt="<?php echo $brand . " " . $model ?>"></legend>
         <h5>You have selected the data below:</h5>
         <table class="table w-75 mt-3">
             <tr>
-                <td><?php echo $name ?></td>
+                <td><?php echo $brand . " " . $model ?></td>
             </tr>
         </table>
 
