@@ -31,7 +31,6 @@ if (isset($_GET['id'])) {
         $picture = $data['picture'];
     }
 }
-
 //update
 $class = 'd-none';
 if (isset($_POST["submit"])) {
@@ -45,9 +44,9 @@ if (isset($_POST["submit"])) {
     $picture = $pictureArray->fileName;
     if ($pictureArray->error === 0) {
         ($_POST["picture"] == "avatar.png") ?: unlink("pictures/{$_POST["picture"]}");
-        $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email', picture = '$pictureArray->fileName' WHERE id = {$id}";
+        $sql = "UPDATE users SET fname = '$f_name', lname = '$l_name', email = '$email', picture = '$pictureArray->fileName' WHERE id = {$id}";
     } else {
-        $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email' WHERE id = {$id}";
+        $sql = "UPDATE users SET fname = '$f_name', lname = '$l_name', email = '$email' WHERE id = {$id}";
     }
     if (mysqli_query($connect, $sql) === true) {
         $class = "alert alert-success";
